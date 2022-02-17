@@ -4,6 +4,15 @@ const textString = myName.textContent;
 const QuoteString = myQuote.textContent;
 const splittedText = textString.split("");
 const splittedQuote = QuoteString.split("");
+const TLDR_Button = document.querySelector("#TLDR_RADIO");
+const DETAILED_BUTTON = document.querySelector("#DETAILED_RADIO");
+const about_content_container = document.getElementById("left-text-cont");
+const about_text_node = document.createElement('p');
+about_content_container.appendChild(about_text_node);
+
+
+console.log(about_content_container);
+
 myName.textContent = "";
 
 myQuote.innerHTML = myQuote.textContent.replace(/\S/g,"<span class='letterQuote'>$&</span>");
@@ -39,3 +48,29 @@ anime.timeline({loop: false})
         duration: 1400,
         delay: (el, i) => 300 + 30 * i
     },"-=1200");
+
+const tldr_text = document.createTextNode("A Biochemist that has a passion for programming.");
+const detailed_text = document.createTextNode("PlaceHolder Text, coming soon !");
+
+
+if(TLDR_Button.checked){
+    writeAboutContent("TLDR");
+}
+else{
+    writeAboutContent("DETAILED");
+}
+
+function writeAboutContent(type){
+    if(type=="TLDR"){
+        about_text_node.replaceChildren(tldr_text);
+        about_content_container.replaceChildren(about_text_node);
+    }
+    else{
+        about_text_node.replaceChildren(detailed_text);
+        about_content_container.replaceChildren(about_text_node);
+    }
+}
+
+TLDR_Button.addEventListener("click", ()=>{writeAboutContent("TLDR")});
+DETAILED_BUTTON.addEventListener("click", ()=>{writeAboutContent("DETAILED")});
+
