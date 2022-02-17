@@ -29,7 +29,7 @@ anime.timeline({loop: false})
     .add({
         targets: '#periodPoint',
         color : '#f94c57',
-    },"-=1250")
+    },"-=1000")
     .add({
         targets: '.letterQuote',
         translateY: [100,0],
