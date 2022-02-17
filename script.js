@@ -11,8 +11,6 @@ const about_text_node = document.createElement('p');
 about_content_container.appendChild(about_text_node);
 
 
-console.log(about_content_container);
-
 myName.textContent = "";
 
 myQuote.innerHTML = myQuote.textContent.replace(/\S/g,"<span class='letterQuote'>$&</span>");
@@ -50,7 +48,8 @@ anime.timeline({loop: false})
     },"-=1200");
 
 const tldr_text = document.createTextNode("A Biochemist that has a passion for programming.");
-const detailed_text = document.createTextNode("PlaceHolder Text, coming soon !");
+const detailed_text = document.createTextNode("Hi! I'm Amine Abdelaziz, I'm a biochemist by day, and a programmer by night\
+, ...");
 
 
 if(TLDR_Button.checked){
@@ -74,3 +73,42 @@ function writeAboutContent(type){
 TLDR_Button.addEventListener("click", ()=>{writeAboutContent("TLDR")});
 DETAILED_BUTTON.addEventListener("click", ()=>{writeAboutContent("DETAILED")});
 
+
+
+let mysvgObject = document.getElementById("my-svg1");
+
+
+window.addEventListener('DOMContentLoaded', function () {
+    if(mysvgObject){
+        new Vivus('my-svg1', { duration: 150 }, );
+        new Vivus('my-svg2', { duration: 150 }, );
+    }
+    new Vivus('my-svg1', { duration: 150 }, );
+    new Vivus('my-svg2', { duration: 150 }, );
+    // let svgdoc = mysvgObject.contentDocument;
+    // console.log(svgdoc);
+});
+
+
+
+//This helper function deserves a nobel prize
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+
+
+// // Add a timeout of 5 seconds before starting the animation, but you can
+// //use a click even or anything else..
+// setTimeout(function () {
+//   // Add the trigger class to the SVG
+//   let mysvg1 = document.getElementById("my-svg1").contentDocument;
+//   console.log(mysvg1);
+
+// }, 5000);
