@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 
-//This helper function deserves a nobel prize
+//This helper function deserves a nobel prize, it abstracts the question "is my element visible on screen right now ?" to a simple yes or no question.
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
