@@ -32,29 +32,22 @@
         <hr class="separator_bar">
         <div class="language_div">
             <div class="mainlogo">
-
                 <img src="./assets/java-plain-wordmark 1.png" alt="Java" title="Java">
             </div>
-
             <div class="detail_content">
-
                 <img src="./assets/android-plain 1.png" alt="Android" title="Android">
-
             </div>
         </div>
  
         <hr class="separator_bar">
         <div class="language_div">
             <div class="mainlogo weblogos">
-                <div class="weblogosdiv">
-                    <img class="html" src="./assets/html5-plain-wordmark 1.png" alt="HTML" title="HTML">
-                    <img class="css" src="./assets/css3-plain-wordmark 1.png" alt="CSS" title="CSS">
-                    <img class="js" src="./assets/javascript-plain 1.png" alt="Javascript" title="JavaScript">
-                </div>
+                <img class="html weblang" src="./assets/html5-plain-wordmark 1.png" alt="HTML" title="HTML">
+                <img class="css weblang" src="./assets/css3-plain-wordmark 1.png" alt="CSS" title="CSS">
+                <img class="js weblang" src="./assets/javascript-plain 1.png" alt="Javascript" title="JavaScript">
             </div>
 
             <div class="detail_content">
-
                 <img src="./assets/svelte-plain-wordmark 1.png" alt="Svelte" title="Svelte">
 
             </div>
@@ -62,7 +55,6 @@
  
     </div>
     <div class="title">
-
         <h1>Languages and frameworks I use</h1>
     </div>
 
@@ -92,6 +84,12 @@
 
     }
 
+    h1{
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
     .language_div{
         display: flex;
         flex-direction: column;
@@ -112,40 +110,38 @@
 
     .mainlogo > img {
         max-width: 25vw;
+        min-width: 3.5em;
         max-height: 25vh;
         height: auto;
     }
 
-    .weblogosdiv{
-        position: relative;
+    .weblogos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .html{
-        width: 6vw;
-        position: absolute;
-        top: -12vh;
-        left: -5vw;
+        align-self: flex-start;
     }
 
     .css {
-        width: 6vw;
-        position: absolute;
-        top: -7vh;
-        left: 0;
+        align-self: center;
     }
 
     .js{
-        width: 5vw;
-        position: absolute;
-        top: 2vh;
-        left: -5vw;
+        align-self: flex-end;
+    }
+
+    .weblang{
+        width: 30%;
     }
 
     .detail_content{
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 5vw;
+        gap: 10%;
     }
     
     .detail_content > img {
@@ -168,5 +164,50 @@
         font-family: "League Spartan", sans-serif ;
     }
 
+    @media (max-width: 480px){
+        .mainStuff{
+            flex-direction: column;
+            height: 60%;
+        }
+
+        .language_div{
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: nowrap;
+            height: 22vh;
+            width: 80%;
+        }
+        
+        .mainlogo > img :not(.weblang) {
+            min-width: 6em;
+        }
+        .mainlogo{
+            flex: 0 1 40%;
+            width: 50%;
+            height: 100%;
+        }
+   
+        .weblogos{
+            flex: 0 1 40%;
+        }
+
+        .weblang{
+            min-width: 45%;
+        }
+
+        .detail_content{
+            flex-grow: 1;
+        }
+
+        .detail_content > img {
+            min-width: 4em;
+        }
+
+        .separator_bar{
+            height: 0;
+            margin: 2% 0%;
+            width: 80vw;
+        }
+    }
 
 </style>

@@ -39,7 +39,7 @@ import { createEventDispatcher } from "svelte"
         right: 4vw;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 100;
+        z-index: 999;
     }
 
     .nvbrButton{

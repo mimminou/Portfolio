@@ -32,14 +32,6 @@
         let currentY = yPos
         let deltaY = initialY - currentY
         scrolling(deltaY)
-        if (deltaY > 0){
-            console.log("SWIPE UP, GO DOWN")
-
-        }
-
-        else {
-            console.log("SWIPE DOWN, GO UP")
-        }
         initialY = null
 
     }
@@ -107,21 +99,25 @@
             }
         }
     }
-    
+    function goToTop(){
+        window.scroll(0, 0)
+    }
+
+
     onMount(() => {
         appSections = [HeroSection, SimpleSection, ComplexSection, LanguagesSection,
-                        ToolsSection] //Remember to add sections here 
+                        ToolsSection, ProjectsSection] //Remember to add sections here 
         currentElement = appSections[0]
         window.scroll(0, 0)
         currentElementIndex = 0
     })
-
+    history.scrollRestoration = "manual"
 </script>
 
 <svelte:window on:touchstart={(event)=>{touchEvent(event.touches[0].clientY)}}
     on:touchmove|preventDefault|nonpassive={(event)=>{touchMoveEvent(event.touches[0].clientY)}} 
     on:wheel|preventDefault|nonpassive={(event)=>{scrolling(event.deltaY)}}
-    on:keydown={handleKeydown}/>
+    on:keydown={handleKeydown} on:beforeunload={goToTop}/>
 
 <svelte:head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"> 
@@ -137,6 +133,7 @@
     <Complex bind:DOMElement={ComplexSection}/>
     <Languages bind:DOMElement={LanguagesSection}/>
     <Tools bind:DOMElement={ToolsSection}/>
+    <Projects bind:DOMElement={ProjectsSection}/>
 </main>
 
 
