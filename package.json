@@ -12,5 +12,12 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "svelte": "^3.49.0",
     "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "@glidejs/glide": "^3.6.0",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/svelte-splide": "^0.2.9",
+    "glidejs": "^2.1.0",
+    "scroll-into-view": "^1.16.2"
   }
 }
