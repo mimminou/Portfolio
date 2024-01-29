@@ -1,75 +1,99 @@
-<svelte:options accessors={true}/>
+<svelte:options accessors={true} />
+
 <script>
-    import Sliders from "../components/Slides.svelte"
-    export let DOMElement
-    export const name = "Projects"
-    export const classname = "projects_div"
+    import Sliders from "../components/Slides.svelte";
+    export let DOMElement;
+    export const name = "Projects";
+    export const classname = "projects_div";
 
-    const Project = (name, image, technologies) => {
-        return {name : name, img : image, techs : technologies} //maybe add description ... sounds usefull
+    const Project = (name, image, technologies, link) => {
+        return { name, image, technologies, link }; //maybe add description ... sounds usefull
+    };
+
+    const pythonImg = "./assets/python-plain-wordmark 1.png";
+    const javaImg = "./assets/java-plain-wordmark 1.png";
+    const AndroidImg = "./assets/android-plain 1.png";
+
+    let PDBaser = Project(
+        "PDBaser",
+        "pdbaser.png",
+        [pythonImg],
+        "https://github.com/mimminou/PDBASER",
+    );
+    let AminusPriceChecker = Project(
+        "Aminus Price Checker",
+        "Aminus.png",
+        [javaImg, AndroidImg, pythonImg],
+        "",
+    );
+    let projectsList = [PDBaser, AminusPriceChecker]; // add more stuff here
+
+    $: projectName = "";
+    $: projectTech = [];
+    $: projectLink = "";
+
+    function slideIndexChanged(event) {
+        projectName = projectsList.at(event.detail.index).name;
+        projectTech = projectsList.at(event.detail.index).technologies;
+        projectLink = projectsList.at(event.detail.index).link;
     }
-
-    let PDBaser = Project("PDBaser", "pdbaser.png", ["Python", "TkInter"])
-    let AminusPriceChecker = Project("Aminus Price Checker", "Aminus.png",["Java/Android", "Python on desktop side"])
-    let projectsList = [PDBaser, AminusPriceChecker]
-    
-
-    function slideIndexChanged(event){
-        projectName = projectsList.at(event.detail.index).name
-        projectTech = projectsList.at(event.detail.index).techs
-    }
-
-    $: projectName = ""
-    $: projectTech = []
-
 </script>
 
 <div class="projects_div" bind:this={DOMElement}>
     <h1 class="title">Notable projects of mine</h1>
     <div class="container">
-    <div class="left_projects">
-        <div class="project_content">
+        <div class="left_projects">
             <div class="projectName">
-                <h3 style="text-decoration: underline; display: inline-block;">Project:</h3>
-                <h5 style="display: block;"> {projectName} </h5>
+                <h2 class="projectName" style=" margin: 2%;">
+                    {projectName}
+                </h2>
+                {#if projectLink.length != 0}
+                    <a
+                        class="projectName"
+                        style="color: inherit;"
+                        href={projectLink}
+                        target="_blank">(Link)</a
+                    >
+                {/if}
             </div>
-            <div class="projectTech">
-                <h3 style="text-decoration: underline; display: inline-block;">Made with:</h3>
-                <h5 style="display: block;">{projectTech.join(", ")}</h5>
+            <div class="projectStack">
+                <h3>Built With</h3>
+                <div class="projectTech">
+                    <ul class="projectTechList">
+                        {#each projectTech as tech}
+                            <li class="listItem">
+                                <img class="techImg" src={tech} alt="" />
+                            </li>
+                        {/each}
+                    </ul>
+                </div>
             </div>
-
         </div>
-                        
-    </div>
         <div class="right_projects">
-            <Sliders projectsList={projectsList} on:slideChanged={slideIndexChanged}/>   
+            <Sliders {projectsList} on:slideChanged={slideIndexChanged} />
         </div>
     </div>
-
 </div>
 
 <style>
-
     .title {
         padding: 0.5em 0.5em;
         margin: 0;
         font-size: 3em;
         font-family: "League Spartan", monospace;
-        color: #B8B8B8;
+        color: #b8b8b8;
         flex: 0 1 15%;
     }
-    :is(h4, h3){
-        padding: 0.5em 0.5em;
-        margin : 0;
-    
+
+    .projectName {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
     }
-    h5{
-        color: #c8c8c8 ;
-        padding: 0 0.5em;
-        margin: 0;
-    }
-    
-    .projects_div{
+
+    .projects_div {
         margin: 0px;
         padding: 0px;
         display: flex;
@@ -79,92 +103,139 @@
         background-color: #212121;
     }
 
-    .container{
-        flex : 1 1 80%;
+    .projectStack {
         display: flex;
-        max-height: 80%;
-        align-items: stretch;
-        justify-content: space-evenly;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        margin: 0%;
+        padding: 0px;
     }
-    
-    .right_projects{
+
+    .projectTech {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .projectTechList {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+        max-width: 100%;
+        flex-flow: wrap;
+        gap: 5%;
+        list-style: none;
+        padding: 0px;
+    }
+
+    .listItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .techImg {
+        max-width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .container {
+        flex: 1 1;
+        display: flex;
+        max-height: 90%;
+        align-items: stretch;
+        gap: 1em;
+    }
+
+    .right_projects {
         display: flex;
         max-width: 50%;
         justify-content: center;
         align-items: flex-start;
     }
 
-    .left_projects{
+    .left_projects {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         font-family: "League Spartan", monospace;
         font-size: 2em;
-        width: 30vw;
-        color: #B8B8B8;
+        width: 50vw;
+        color: #b8b8b8;
     }
 
-
-    @media (max-width: 480px){
-        .projects_div{
+    @media (max-width: 480px) {
+        .projects_div {
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
         }
         .title {
             padding: 0.5em 0em;
             text-align: center;
-        
         }
 
-        .left_projects{
+        .left_projects {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             width: 90%;
-            height: 40%;
         }
-        .right_projects{
+        .right_projects {
             max-width: 95%;
-            width: 95%;
             right: 60%;
+            height: 100%;
         }
 
-        .project_content{
+        .projectName {
+            width: 40%;
+            text-align: center;
+        }
+
+        .projectTech {
             width: 100%;
+            text-align: center;
+        }
+
+        .projectStack {
             display: flex;
             justify-content: center;
-            gap: 5%;
+            width: 100%;
+            align-items: center;
+            flex-direction: column;
+            margin: 0%;
+            padding: 0px;
+        }
+        .projectTechList {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: row;
+            max-width: 100%;
         }
-        
-        .projectName{
-            width: 40%;
-            text-align: center;
-        }
-
-        .projectTech{
-            width: 40%;
-            text-align: center;
-        }
-
-        :is(h4, h3){
+        :is(h4, h3) {
             flex: 0 1 50%;
             padding: 0;
-            margin : 0;
+            margin: 0;
         }
-        h5{
-            color: #c8c8c8 ;
+        h5 {
+            color: #c8c8c8;
             padding: 0;
             margin: 0;
         }
 
-        .container{
+        .container {
             flex-direction: column;
             align-items: center;
             justify-content: start;
+            height: 100%;
         }
     }
-
-
-
-
 </style>
