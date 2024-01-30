@@ -1,6 +1,8 @@
 <svelte:options accessors={true} />
 
 <script>
+    // start using Tailwind because otherwise it will get ugly very quickly, project has many sections so using vanilla CSS is not the best developer experience
+    // and is not huge enough to cause problems with tailwind
     import Sliders from "../components/Slides.svelte";
     export let DOMElement;
     export const name = "Projects";
@@ -39,12 +41,14 @@
     }
 </script>
 
-<div class="projects_div" bind:this={DOMElement}>
+<div class="projects_div flex flex-col" bind:this={DOMElement}>
     <h1 class="title">Notable projects of mine</h1>
-    <div class="container">
-        <div class="left_projects">
+    <div class="container flex flex-row gap-2">
+        <div
+            class="left_projects flex h-full flex-col w-1/2 sm:h-1/2 sm:w-full flex-grow-0 flex-shrink-0 basis-[40%]"
+        >
             <div class="projectName">
-                <h2 class="projectName" style=" margin: 2%;">
+                <h2 class="projectName m-1">
                     {projectName}
                 </h2>
                 {#if projectLink.length != 0}
@@ -69,7 +73,9 @@
                 </div>
             </div>
         </div>
-        <div class="right_projects">
+        <div
+            class="right_projects flex justify-center items-center flex-grow-0 flex-shrink-0 basis-[60%]"
+        >
             <Sliders {projectsList} on:slideChanged={slideIndexChanged} />
         </div>
     </div>
@@ -96,19 +102,13 @@
     .projects_div {
         margin: 0px;
         padding: 0px;
-        display: flex;
-        flex-direction: column;
         height: 100vh;
         width: 100%;
         background-color: #212121;
     }
 
     .projectStack {
-        display: flex;
-        justify-content: center;
         width: 100%;
-        align-items: center;
-        flex-direction: column;
         margin: 0%;
         padding: 0px;
     }
@@ -146,28 +146,10 @@
         padding: 0px;
         margin: 0px;
     }
-    .container {
-        flex: 1 1;
-        display: flex;
-        max-height: 90%;
-        align-items: stretch;
-        gap: 1em;
-    }
-
-    .right_projects {
-        display: flex;
-        max-width: 50%;
-        justify-content: center;
-        align-items: flex-start;
-    }
 
     .left_projects {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
         font-family: "League Spartan", monospace;
         font-size: 2em;
-        width: 50vw;
         color: #b8b8b8;
     }
 
@@ -187,11 +169,6 @@
             flex-direction: column;
             align-items: center;
             width: 90%;
-        }
-        .right_projects {
-            max-width: 95%;
-            right: 60%;
-            height: 100%;
         }
 
         .projectName {
