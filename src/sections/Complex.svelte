@@ -23,8 +23,8 @@
     </div>
 
     <div class="right_complex">
-        <p>
-            But also <span style="color:#FF5757;">complex</span> <br />
+        <p class="text-3xl sm:text-6xl">
+            But also <span style="color:#FF5757;">complex</span>
             and <span style="color:#AA79E6;">scalable</span> stuff
         </p>
     </div>
@@ -44,6 +44,7 @@
     .left_complex {
         width: 50vw;
         display: flex;
+        flex-grow: 1;
         justify-content: center;
         align-items: center;
     }
@@ -68,12 +69,6 @@
         width: 40vw;
         max-width: 40vw;
         transform: translate(-40%, -0%);
-    }
-
-    p {
-        transform: translate(0, -10%);
-        padding: 0;
-        margin: 0;
     }
 
     @media (max-width: 480px) {
@@ -107,10 +102,7 @@
             align-items: center;
             text-align: center;
             width: 90vw;
-            height: 50vh;
-        }
-        p {
-            transform: translate(0, -10%);
+            height: 30vh;
         }
     }
 </style>
