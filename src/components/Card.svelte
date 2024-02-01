@@ -6,13 +6,13 @@
 </script>
 
 <div
-	class="Card flex justify-center items-center flex-row sm:flex-col rounded-md h-[20svh] sm:h-[70svh] w-[80vw] sm:w-[20vw]"
+	class="Card flex justify-center items-center flex-row sm:flex-col rounded-lg h-[20svh] sm:h-[70svh] w-[80vw] sm:w-[20vw]"
 >
 	{#if link != ""}
 		<a
 			href={link}
 			target="_blank"
-			class="w-full h-full imgDiv rounded-l-md rounded-r-3xl sm:rounded-t-md sm:rounded-b-3xl"
+			class="w-full h-full imgDiv rounded-l-lg rounded-r-3xl sm:rounded-t-lg sm:rounded-b-3xl"
 		>
 			<img
 				class="max-h-[80%] max-w-[80%] sm:max-h-full sm:max-w-full"
@@ -22,19 +22,19 @@
 		</a>
 	{:else}
 		<div
-			class="w-full h-full imgDiv rounded-l-md rounded-r-3xl sm:rounded-t-md sm:rounded-b-3xl"
+			class="w-full h-full imgDiv rounded-l-lg rounded-r-3xl sm:rounded-t-lg sm:rounded-b-3xl"
 		>
 			<img class="projectImg" src={img} alt="" />
 		</div>
 	{/if}
 
-	<div class="infoDiv rounded-2xl min-w-[20vw] h-full">
+	<div class="infoDiv min-w-[20vw] h-full">
 		<span class="title text-lg sm:text-3xl">{title}</span>
 		<ul
 			class="flex flex-col content-start items-start list-disc list-inside"
 		>
 			{#each techs as tech}
-				<li class="tech text-start text-sm sm:text-lg">
+				<li class="tech text-start text-sm sm:text-2xl">
 					{tech}
 				</li>
 			{/each}

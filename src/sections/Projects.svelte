@@ -51,7 +51,7 @@
     <h1 class="title sm:p-2 p-0.5 sm:text-6xl text-4xl">Some of my work</h1>
     <div class="flex flex-grow items-stretch">
         <div
-            class="flex flex-col sm:flex-row sm:gap-4 gap-2 sm:justify-self-center justify-evenly"
+            class="flex flex-col sm:flex-row sm:gap-6 gap-2 sm:justify-self-center items-center justify-evenly"
         >
             {#each projectsList as project}
                 <Card
