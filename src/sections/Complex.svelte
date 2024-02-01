@@ -23,7 +23,7 @@
     </div>
 
     <div class="right_complex">
-        <p class="text-3xl sm:text-6xl">
+        <p class="paragraph text-3xl sm:text-6xl">
             But also <span style="color:#FF5757;">complex</span>
             and <span style="color:#AA79E6;">scalable</span> stuff
         </p>
@@ -36,7 +36,7 @@
         padding: 0px;
         display: flex;
         flex-direction: row;
-        height: 100vh;
+        height: 100%;
         width: 100%;
         background-color: #d1d1d1;
     }
@@ -53,10 +53,10 @@
         display: flex;
         align-items: center;
         width: 50vw;
+        padding-left: 5%;
+        padding-right: 5%;
         font-family: "League Spartan", monospace;
-        font-size: 4em;
         color: #505050;
-        z-index: 100;
     }
 
     #complex_img1 {
@@ -82,7 +82,7 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            height: 50vh;
+            height: 50svh;
         }
 
         #complex_img1 {
@@ -102,7 +102,7 @@
             align-items: center;
             text-align: center;
             width: 90vw;
-            height: 30vh;
+            height: 30svh;
         }
     }
 </style>

@@ -10,7 +10,6 @@
     import windowsImg from "../assets/windows8-original 1.png";
     import linuxImg from "../assets/linux-original 1.png";
     export let DOMElement;
-
     export const name = "Tools";
 </script>
 
@@ -24,21 +23,20 @@
         <img src={windowsImg} title="Windows" alt="Windows" />
         <img src={linuxImg} title="Linux" alt="Linux" />
     </div>
-    <h1 class="title">Tools I use</h1>
+    <h1 class="title md:text-5xl text-3xl">Tools I use</h1>
 </div>
 
 <style>
     .tools_div {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         background-color: #d1d1d1;
-        gap: 5%;
         row-gap: 10vh;
         padding: 0px;
         margin: 0px;
-        height: 100vh;
+        height: 100%;
         width: 100%;
     }
 
@@ -46,30 +44,29 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 5vw;
-        row-gap: 5vh;
+        column-gap: 5vw;
+        row-gap: 5svh;
         align-items: center;
         flex-wrap: wrap;
     }
 
     .tools > img {
-        margin: 0.5em 0.5em;
         max-width: 8em;
-        min-width: 4em;
+        max-height: 128px;
     }
 
     .title {
         color: #505050;
         text-align: center;
-        font-size: 3em;
+        padding-left: 2%;
+        padding-right: 2%;
         font-family: "League Spartan", sans-serif;
     }
 
     @media (max-width: 480px) {
         .tools > img {
-            margin: 0.5em 0.5em;
             max-width: 6em;
-            min-width: 4em;
+            min-width: 3em;
         }
     }
 </style>

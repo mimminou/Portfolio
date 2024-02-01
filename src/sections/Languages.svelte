@@ -46,37 +46,36 @@
         background-color: #212121;
         padding: 0px;
         margin: 0px;
-        height: 100vh;
+        height: 100%;
         width: 100%;
     }
     .langs {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        column-gap: 5%;
-        row-gap: 5vh;
+        column-gap: 5vw;
+        row-gap: 5svh;
         align-items: center;
         flex-wrap: wrap;
     }
 
     .langs > img {
-        margin: 0.5em 0.5em;
         max-width: 8em;
         max-height: 128px;
-        min-width: 4em;
     }
 
     .title {
         color: #b8b8b8;
         text-align: center;
+        padding-left: 2%;
+        padding-right: 2%;
         font-family: "League Spartan", sans-serif;
     }
 
     @media (max-width: 480px) {
         .langs > img {
-            margin: 0.5em 0.5em;
             max-width: 6em;
-            min-width: 4em;
+            min-width: 3em;
         }
     }
 </style>
